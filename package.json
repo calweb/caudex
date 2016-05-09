@@ -1,0 +1,15 @@
+{
+  "name": "caudex",
+  "version": "0.0.1",
+  "description": "Understand your DNA",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Calvin Webster <calweb@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dna2json": "^1.0.1",
+    "rx": "^4.1.0"
+  }
+}

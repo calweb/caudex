@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.drop-zone {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  bottom: 10%;
+  right: 10%;
+  border-radius: 10px;
+  border: 8px dotted #fff;
+  background-color: #B6B6B6;
+}
+
+.drag-over {
+  background-color: #B3E5FC;
+}
+.drag-drop {
+  background-color: #00E676;
+}
