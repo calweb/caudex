@@ -49,10 +49,9 @@ dropStream
     event.preventDefault()
     return event.dataTransfer.files[0].path
   })
-  .tap((something) => console.log(`doing something, ${something}`))
+  .tap((something) => console.log(`path to raw dna file... ${something}`))
   .subscribe(
     (path) => {
-      console.log(path)
       ipc.send('process-dna', path)
       dropZone.classList.remove('drag-over')
       dropZone.classList.add('drag-drop')

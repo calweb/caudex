@@ -1,7 +1,7 @@
 'use strict'
 const Rx = require('rx')
-const readFile = require('fs').readFile
-const parse = require('dna2json').parse
+const { readFile } = require('fs')
+const { parse } = require('dna2json')
 const dnaParser = Rx.Observable.fromCallback(parse)
 const fileContents = Rx.Observable.fromNodeCallback(readFile)
 
