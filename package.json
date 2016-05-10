@@ -1,6 +1,6 @@
 {
   "name": "Caudex",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Understand your DNA",
   "main": "app/main.js",
   "scripts": {
