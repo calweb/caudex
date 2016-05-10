@@ -1,5 +1,5 @@
 {
-  "name": "caudex",
+  "name": "Caudex",
   "version": "0.0.1",
   "description": "Understand your DNA",
   "main": "main.js",
@@ -10,6 +10,11 @@
   "license": "MIT",
   "dependencies": {
     "dna2json": "^1.0.1",
+    "genoset-191": "^1.0.0",
+    "genoset-211": "^1.0.0",
+    "genoset-221": "^1.0.0",
+    "genoset-228": "^1.0.1",
+    "gql": "^1.1.0",
     "rx": "^4.1.0"
   }
 }
