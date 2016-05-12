@@ -63,5 +63,8 @@ dropStream
 
 
 ipc.on('dna-import-finished', () => {
+  new Notification('Import Complete!', {
+    body: 'Congratulations, your DNA is now available for analysis!'
+  })
   dropZone.innerHTML += '<h1>File Conversion Complete!</h1>'
 })
