@@ -1,15 +1,8 @@
 const ipc = require('electron').ipcRenderer
-const q = require('gql')
-const path = require('path')
 const { app, getGlobal } = require('remote')
 const Rx = require('rx')
-// @todo: refactor a lot of this out into modules
-// genosets
-const heartAttackRisk = require('genoset-291')
-const probNSAID = require('genoset-191')
-const isLightweight = require('genoset-211')
-const gluetenIntolerance = require('genoset-221')
-const isSickleCell = require('genoset-228')
+const genosets = require('./genosets')
+
 // DOM
 const dropZone = document.querySelector('.drop-zone')
 const analyzeBtn = document.querySelector('aside button')
@@ -19,16 +12,14 @@ const dropStream = Rx.Observable.fromEvent(dropZone, 'drop')
 const dragOver = Rx.Observable.fromEvent(dropZone, 'dragover')
 const dragLeave = Rx.Observable.fromEvent(dropZone, 'dragleave')
 
+const myDna = getGlobal('dnaFilePath')
+
 analyzeObs
   .map((event) => event.preventDefault())
   .subscribe(() => {
-    // mah dna
-    const myDna = getGlobal('dnaFilePath')
-      console.log(`lower risk of heart attack: ${heartAttackRisk(myDna)}`)
-      console.log(`problem metabolizing NSAID: ${probNSAID(myDna)}`)
-      console.log(`problem metabolizing ethanol: ${isLightweight(myDna)}`)
-      console.log(`problem metabolizing: ${gluetenIntolerance(myDna)}`)
-      console.log(`you have sickle cell anemia: ${isSickleCell(myDna)}`)
+      Object.keys(genosets).forEach((genoset) => {
+        console.log(`You are ${genosets[genoset].test(myDna) ? 'Positive' : 'Negative'} for ${genosets[genoset].description}`);
+      })
     }
   )
 
@@ -60,11 +51,10 @@ dropStream
     (something) => console.log(`Complete! ${something}`)
   )
 
-
-
 ipc.on('dna-import-finished', () => {
   new Notification('Import Complete!', {
     body: 'Congratulations, your DNA is now available for analysis!'
   })
+  dropZone.classList.remove('drag-drop')
   dropZone.innerHTML += '<h1>File Conversion Complete!</h1>'
 })

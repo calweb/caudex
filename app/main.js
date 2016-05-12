@@ -1,6 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
-const fs = require('fs')
 const processDna = require('./processDna')
 
 app.setPath('appData', path.join(app.getPath('appData'), app.getName()))
@@ -22,9 +21,9 @@ app.on('ready', () => {
   })
   ipcMain.on('process-dna', (event, filePath) => {
 
-    processDna(filePath)
+    processDna(filePath, dnaFilePath)
       .subscribe(
-        (res) => fs.writeFileSync(dnaFilePath, JSON.stringify(res[1])),
+        () => console.log('tis done....'),
         (err) => console.log(err),
         () => {
             mainWindow.webContents.send('dna-import-finished')
