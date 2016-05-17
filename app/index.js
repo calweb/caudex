@@ -27,8 +27,8 @@ mergedEvts$
   .map((res) => event.dataTransfer.files[0].path)
   .subscribe(
     (path) => {
-      ipc.send('process-dna', path)
       dropZone.classList.add('drag-drop')
+      ipc.send('process-dna', path)
     },
     (err) => console.log(`Error: ${err}`),
     (something) => console.log(`Complete! ${something}`)
@@ -37,7 +37,7 @@ mergedEvts$
 const myDna = getGlobal('dnaFilePath')
 
 analyzeObs
-  .map((event) => event.preventDefault())
+  .tap((event) => event.preventDefault())
   .subscribe(() => {
       Object.keys(genosets).forEach((genoset) => {
         console.log(`You are ${genosets[genoset].test(myDna) ? 'Positive' : 'Negative'} for ${genosets[genoset].description}`);

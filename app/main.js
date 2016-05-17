@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const processDna = require('./processDna')
 const { writeFileSync, createReadStream, createWriteStream } = require('fs')
+
 app.setPath('appData', path.join(app.getPath('appData'), app.getName()))
 global.dnaFilePath = path.join(app.getPath('appData'), '/myDna.json')
 
