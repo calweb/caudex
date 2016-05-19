@@ -1,5 +1,5 @@
 const ipc = require('electron').ipcRenderer
-const { app, getGlobal } = require('remote')
+const { getGlobal } = require('remote')
 const Rx = require('rx')
 const genosets = require('./genosets')
 
@@ -34,11 +34,10 @@ mergedEvts$
     (something) => console.log(`Complete! ${something}`)
   )
 
-const myDna = getGlobal('dnaFilePath')
-
 analyzeObs
   .tap((event) => event.preventDefault())
   .subscribe(() => {
+    const myDna = require(getGlobal('dnaFilePath'))
       Object.keys(genosets).forEach((genoset) => {
         console.log(`You are ${genosets[genoset].test(myDna) ? 'Positive' : 'Negative'} for ${genosets[genoset].description}`);
       })
