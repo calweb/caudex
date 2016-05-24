@@ -4,13 +4,14 @@ const processDna = require('./processDna')
 
 app.setPath('appData', path.join(app.getPath('appData'), app.getName()))
 
+
 let mainWindow = null
 
 app.on('ready', () => {
 
   mainWindow = new BrowserWindow({
     height: 800,
-    width: 600
+    width: 1000
   })
 
   mainWindow.loadURL(`file://${__dirname}/index.html`)
