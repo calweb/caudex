@@ -7,8 +7,7 @@ const { parse } = require('dna2json')
 const dnaParser = Rx.Observable.fromCallback(parse)
 const writeFile$ = Rx.Observable.fromNodeCallback(writeFile)
 const fileContents = Rx.Observable.fromNodeCallback(readFile)
-global.dnaFilePath = path.join(app.getPath('appData'), '/myDna.json')
-
+global.dnaFilePath = path.join(app.getPath('appData'), app.getName(),  '/myDna.json')
 const processingDnaLog = () => console.log('Processing DNA now...')
 
 const parseDna = (filePath) => fileContents(filePath, 'utf8')
