@@ -39,7 +39,9 @@ analyzeObs
   .subscribe(() => {
     const myDna = require(getGlobal('dnaFilePath'))
       Object.keys(genosets).forEach((genoset) => {
-        console.log(`You are ${genosets[genoset].test(myDna) ? 'Positive' : 'Negative'} for ${genosets[genoset].description}`);
+        console.log(`You are ${genosets[genoset].test(myDna)
+          ? 'Positive'
+          : 'Negative'} for ${genosets[genoset].description}`)
       })
     }
   )
