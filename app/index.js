@@ -1,5 +1,5 @@
 const ipc = require('electron').ipcRenderer
-const { getGlobal } = require('remote')
+const { getGlobal } = require('electron').remote
 const Rx = require('rx')
 const genosets = require('./genosets')
 

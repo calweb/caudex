@@ -1,5 +1,5 @@
 'use strict'
-const app = require('app')
+const { app } = require('electron')
 const Rx = require('rx')
 const { readFile, writeFile } = require('fs')
 const path = require('path')

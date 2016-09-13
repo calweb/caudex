@@ -1,4 +1,4 @@
-const { getGlobal } = require('remote')
+const { getGlobal } = require('electron').remote
 
 const gs144 = require('genoset-male')
 const gs101 = require('genoset-101') // lactose tolerant
